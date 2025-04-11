@@ -1,0 +1,114 @@
+📄 API Documentation – Ecommerce API
+====================================
+
+🧑‍💻 Authentication APIs
+------------------------
+
+🔹 Register
+- URL: /api/register
+- Method: POST
+- Body:
+```json
+{
+  "name": "Krishlay",
+  "email": "krishlay@example.com",
+  "password": "password",
+  "password_confirmation": "password"
+}
+```
+
+🔹 Login
+- URL: /api/login
+- Method: POST
+- Body:
+```json
+{
+  "email": "krishlay@example.com",
+  "password": "password"
+}
+```
+
+📦 Product APIs
+---------------
+
+🔐 All Product APIs require Bearer Token Authentication (Laravel Sanctum).
+
+🔹 Get All Products
+- URL: /api/products
+- Method: GET
+
+🔹 Add Product
+- URL: /api/products
+- Method: POST
+- Body:
+```json
+{
+  "name": "Product 1",
+  "description": "Nice product",
+  "price": 99.99
+}
+```
+
+🔹 Update Product
+- URL: /api/products/{id}
+- Method: PUT
+- Body:
+```json
+{
+  "name": "Updated Product",
+  "description": "Updated description",
+  "price": 120.00
+}
+```
+
+🔹 Delete Product
+- URL: /api/products/{id}
+- Method: DELETE
+
+
+🔐 Sanctum Installation
+-----------------------
+
+Sanctum is auto-installed when you run:
+```bash
+docker compose exec app composer install
+```
+Because it's added in `composer.json`:
+```json
+"require": {
+  "laravel/sanctum": "^4.0"
+}
+```
+
+
+⚙️ Line Endings (CRLF to LF)
+-----------------------------
+
+If you're working on Windows, Git might show:
+```
+warning: in the working copy of 'filename', CRLF will be replaced by LF
+```
+
+This means it's converting Windows (CRLF) line endings to Unix (LF).
+
+To avoid confusion, run one of these:
+
+```bash
+# Windows (recommended)
+git config --global core.autocrlf true
+
+# Linux/macOS (recommended)
+git config --global core.autocrlf input
+```
+
+
+🐙 GitHub Push Instructions
+---------------------------
+
+```bash
+git init
+git remote add origin https://github.com/KrishlayP/ecommerceApi.git
+git add .
+git commit -m "Initial Commit"
+git push -u origin master
+```

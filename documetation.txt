@@ -1,0 +1,91 @@
+📦 Laravel Ecommerce API with Sanctum (Dockerized)
+
+------------------------------------------------------------
+🛠️ SETUP INSTRUCTIONS
+------------------------------------------------------------
+
+1. Clone the repository:
+   git clone https://github.com/your-username/ecommerce-api.git
+   cd ecommerce-api
+
+2. Start Docker containers:
+   docker compose up -d --build
+
+3. Run composer (inside container):
+   docker compose exec app composer install
+
+4. Run database migrations:
+   docker compose exec app php artisan migrate
+
+5. Optional (generate app key if not already):
+   docker compose exec app php artisan key:generate
+
+6. Serve the app:
+   docker compose exec app php artisan serve
+
+   Default: http://127.0.0.1:8000
+
+------------------------------------------------------------
+🔐 AUTHENTICATION (Sanctum)
+------------------------------------------------------------
+
+Register User:
+POST /api/register
+Body:
+{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "password": "password",
+  "password_confirmation": "password"
+}
+
+Login:
+POST /api/login
+Body:
+{
+  "email": "john@example.com",
+  "password": "password"
+}
+
+Logout:
+POST /api/logout
+(Include Bearer Token in Authorization header)
+
+------------------------------------------------------------
+📦 PRODUCT CRUD ENDPOINTS
+------------------------------------------------------------
+
+Get all products:
+GET /api/products
+
+Get a single product:
+GET /api/products/{id}
+
+Create product:
+POST /api/products
+Body:
+{
+  "name": "Product Name",
+  "description": "Short description",
+  "price": 99.99
+}
+
+Update product:
+PUT /api/products/{id}
+Body:
+{
+  "name": "Updated Product",
+  "description": "Updated desc",
+  "price": 109.99
+}
+
+Delete product:
+DELETE /api/products/{id}
+
+(All routes protected — use token from login/register)
+
+------------------------------------------------------------
+👨‍💻 Notes:
+- Sanctum token required for all CRUD actions.
+- Use Postman or any API client with Bearer token in headers.
+- DB default user/pass: root / root
